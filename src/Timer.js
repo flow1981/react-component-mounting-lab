@@ -3,13 +3,21 @@ import React, { Component } from "react";
 class Timer extends Component {
   state = {
     time: 0,
-    color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    color: "#" + Math.floor(Math.random() * 16777215).toString(16),
+    mounted: 'false'
   };
 
-  // add your code here
+  // will run after component is mounted. will only run once, sicne it mounts only once
   componentDidMount(){
-    setInterval(this.setState({...this.state, time: this.state.time+1}),1000)
+    this.setState({mounted: true})
   }
+
+  componentDidUpdate(){
+    //setInterval(this.setState({...this.state, time: this.state.time+1}),1000)
+    //line above would create an infinite loop
+  }
+
+  
 
   render() {
     const { time, color } = this.state;
