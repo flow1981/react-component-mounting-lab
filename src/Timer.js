@@ -7,6 +7,9 @@ class Timer extends Component {
   };
 
   // add your code here
+  componentDidMount(){
+    setInterval(this.setState({...this.state, time: this.state.time+1}),1000)
+  }
 
   render() {
     const { time, color } = this.state;
